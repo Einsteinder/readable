@@ -43,7 +43,7 @@ const logger = store => next => action => {
     category:"eriefgb",
     voteScore:"10000",
     deleted:"False"
-   } )
+   })
 
   
    
