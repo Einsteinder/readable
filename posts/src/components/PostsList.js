@@ -20,7 +20,7 @@ PostsList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     deleted: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
     timestamp:PropTypes.string.isRequired,
     title:PropTypes.string.isRequired,
     author:PropTypes.string.isRequired,

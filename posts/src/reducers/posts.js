@@ -15,7 +15,7 @@ const posts = (state = [], action) => {
         {
           id: action.id,
           category:action.category,
-          text: action.text,
+          body: action.text,
           title:action.title,
           author:action.author,
           timestamp:datetime,
@@ -31,6 +31,8 @@ const posts = (state = [], action) => {
     case 'ON_CLICK_DOWN':
       return state.map(post=>
         (post.id===action.id)?{...post,voteScore:post.voteScore-1}:post)
+
+
       
     default:
       return state

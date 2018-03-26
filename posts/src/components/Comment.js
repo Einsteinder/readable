@@ -1,20 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Post = ({onClickDetail,onClickUp,onClickDown, deleted, body,title,author,timestamp,voteScore }) => (
+const Comment = ({ onClickDetail,onClickUp,onClickDown, deleted, body,author,timestamp,voteScore }) => (
   <li>
-  <h3>{title}</h3>
   <h4>Author:{author}</h4>
   <p>{timestamp}</p>
   <button  onClick={onClickUp} >↑</button><p>Current Score: {voteScore}</p><button  onClick={onClickDown}>↓</button>
-  <button  onClick={onClickDetail}>DETAIL</button>
 
   <br/>
     {body}
   </li>
 )
 
-Post.propTypes = {
+Comment.propTypes = {
   deleted: PropTypes.bool.isRequired,
   body: PropTypes.string.isRequired,
   timestamp:PropTypes.string.isRequired,
@@ -29,4 +27,4 @@ Post.propTypes = {
 
 }
 
-export default Post
+export default Comment
