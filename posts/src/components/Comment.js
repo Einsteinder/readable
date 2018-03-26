@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Comment = ({ onClickDetail,onClickUp,onClickDown, deleted, body,author,timestamp,voteScore }) => (
+const Comment = ({ onClickDetail,onClickUp,onClickDown,onClickDeleteComment, deleted, body,author,timestamp,voteScore }) => (
   <li>
-  <h4>Author:{author}</h4>
+  <h4>Author:{author}</h4> <button  >EDIT</button><button onClick={onClickDeleteComment} >DELET</button>
   <p>{timestamp}</p>
   <button  onClick={onClickUp} >↑</button><p>Current Score: {voteScore}</p><button  onClick={onClickDown}>↓</button>
 

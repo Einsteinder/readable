@@ -24,7 +24,11 @@ const comments = (state = [], action) => {
           }
         ]
   
-  
+      case 'DELETE_COMMENT':
+        return state.map(comment=>
+         (comment.id===action.id)?{...comment,deleted:true}:comment)
+
+        
       case 'ON_CLICK_UP_C':
         return state.map(comment=>
           (comment.id===action.id)?{...comment,voteScore:comment.voteScore+1}:comment)

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Post from './Post'
 
-const PostsList = ({ posts, onClickDetail,onClickUp,onClickDown }) => (
+const PostsList = ({ posts, onClickDetail,onClickDelete,onClickUp,onClickDown }) => (
   <ul>
     {posts.map(post =>
       <Post
@@ -11,6 +11,7 @@ const PostsList = ({ posts, onClickDetail,onClickUp,onClickDown }) => (
         onClickUp={() => onClickUp(post.id)}
         onClickDown={() => onClickDown(post.id)}
         onClickDetail={() => onClickDetail(post.id)}
+        onClickDelete={() =>onClickDelete(post.id)}
       ></Post>
     )}
   </ul>

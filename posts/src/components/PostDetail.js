@@ -7,7 +7,7 @@ import CommentsList from '../components/CommentsList'
 
 let inputCommentAuthor
 let inputCommentBody
-const PostDetail = ({ comments,post,onClickUp,onClickDown,onClickUpComment,onClickDownComment,addComment }) => (
+const PostDetail = ({ comments,post,onDeleteComment,onClickUp,onClickDown,onClickUpComment,onClickDownComment,addComment }) => (
  <div>
   <h3>{post[0].title}</h3>
   <h4>Author:{post[0].author}</h4>
@@ -41,7 +41,7 @@ const PostDetail = ({ comments,post,onClickUp,onClickDown,onClickUpComment,onCli
           Add Comment
         </button>
       </form>
-      <CommentsList comments={comments} onClickUpComment={onClickUpComment} onClickDownComment={onClickDownComment}/>
+      <CommentsList  onDeleteComment={onDeleteComment} comments={comments} onClickUpComment={onClickUpComment} onClickDownComment={onClickDownComment}/>
     </div>
 )
 

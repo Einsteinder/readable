@@ -36,6 +36,16 @@ export const onClickUp = id => ({
   type: 'ON_CLICK_UP',
   id
 })
+
+export const deletePost = id => ({
+  type: 'DELETE_POST',
+  id
+})
+
+export const deleteComment = id => ({
+  type: 'DELETE_COMMENT',
+  id
+})
 export const onClickDown = id => ({
   type: 'ON_CLICK_DOWN',
   id

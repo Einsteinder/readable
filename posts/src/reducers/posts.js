@@ -15,7 +15,7 @@ const posts = (state = [], action) => {
         {
           id: action.id,
           category:action.category,
-          body: action.text,
+          body: action.body,
           title:action.title,
           author:action.author,
           timestamp:datetime,
@@ -24,7 +24,9 @@ const posts = (state = [], action) => {
         }
       ]
 
-
+    case 'DELETE_POST':
+      return state.map(post=>
+        (post.id===action.id)?{...post,deleted:true}:post)
     case 'ON_CLICK_UP':
       return state.map(post=>
         (post.id===action.id)?{...post,voteScore:post.voteScore+1}:post)

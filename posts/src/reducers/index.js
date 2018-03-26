@@ -10,9 +10,9 @@ const initialState = {
     id:100000000000000,
     timestamp:"12341234fgg",
     title:"nihao",
-    text:"xxixixixi",
+    body:"xxixixixi",
     author:"wemngxuyabng",
-    category:"eriefgb",
+    category:"react",
     voteScore:1,
     deleted:false
    }],
@@ -20,9 +20,9 @@ const initialState = {
     id:100000000000000,
     timestamp:"12341234fgg",
     title:"nihao",
-    text:"xxixixixi",
+    body:"xxixixixi",
     author:"wemngxuyabng",
-    category:"eriefgb",
+    category:"react",
     voteScore:1,
     deleted:false
    }],
