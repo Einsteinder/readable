@@ -10,7 +10,9 @@ const getCommentsForPost = (comments,parentId) => {
 const mapStateToProps = state => (
   {
     post:state.showPost,
-    comments: getCommentsForPost(state.comments,state.showPost[0].id)
+    comments: getCommentsForPost(state.comments,state.showPost[0].id),
+    numberOfComments: state.comments.length
+
   }
  
 

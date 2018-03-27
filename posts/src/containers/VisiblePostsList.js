@@ -32,7 +32,8 @@ const getVisiblePosts = (posts, filter) => {
 }
 
 const mapStateToProps = state => ({
-  posts: getVisiblePosts(state.posts, state.visibilityFilter)
+  posts: getVisiblePosts(state.posts, state.visibilityFilter),
+  numberOfComments: state.comments.length
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -1,17 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CommentsList from '../components/CommentsList'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 
 
 let inputCommentAuthor
 let inputCommentBody
-const PostDetail = ({ comments,post,onDeleteComment,onClickUp,onClickDown,onClickUpComment,onClickDownComment,addComment }) => (
+const PostDetail = ({ comments,post,onDeleteComment,numberOfComments,onClickUp,onClickDown,onClickUpComment,onClickDownComment,addComment }) => (
  <div>
   <h3>{post[0].title}</h3>
   <h4>Author:{post[0].author}</h4>
   <p>{post[0].timestamp}</p>
+  <p>Number of Comments: {numberOfComments}</p>
   <button  onClick={() => onClickUp(post[0].id)}>↑</button> <p>Current Score: {post[0].voteScore}</p><button  onClick={() => onClickDown(post[0].id)}>↓</button>
   <br/>
     {post[0].body}
@@ -56,7 +58,7 @@ PostDetail.propTypes = {
     category:PropTypes.string.isRequired,
     voteScore:PropTypes.number.isRequired
   }).isRequired).isRequired,
-  voteScore: PropTypes.number.isRequired,
+  numberOfComments:PropTypes.number.isRequired,
   onClickUp:PropTypes.func.isRequired,
   onClickDown:PropTypes.func.isRequired,
   addComment:PropTypes.func.isRequired

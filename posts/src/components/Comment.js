@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Comment = ({ onClickDetail,onClickUp,onClickDown,onClickDeleteComment, deleted, body,author,timestamp,voteScore }) => (
+const Comment = ({ onClickUp,onClickDown,onClickDeleteComment, deleted, body,author,timestamp,voteScore }) => (
   <li>
   <h4>Author:{author}</h4> <button  >EDIT</button><button onClick={onClickDeleteComment} >DELET</button>
   <p>{timestamp}</p>
@@ -16,13 +16,11 @@ Comment.propTypes = {
   deleted: PropTypes.bool.isRequired,
   body: PropTypes.string.isRequired,
   timestamp:PropTypes.string.isRequired,
-  title:PropTypes.string.isRequired,
   author:PropTypes.string.isRequired,
-  category:PropTypes.string.isRequired,
   voteScore:PropTypes.number.isRequired,
   onClickUp:PropTypes.func.isRequired,
   onClickDown:PropTypes.func.isRequired,
-  onClickDetail:PropTypes.func.isRequired
+
 
 
 }

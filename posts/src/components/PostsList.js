@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Post from './Post'
 
-const PostsList = ({ posts, onClickDetail,onClickDelete,onClickUp,onClickDown }) => (
+const PostsList = ({ posts, numberOfComments,onClickDetail,onClickDelete,onClickUp,onClickDown }) => (
   <ul>
     {posts.map(post =>
       <Post
@@ -12,6 +12,8 @@ const PostsList = ({ posts, onClickDetail,onClickDelete,onClickUp,onClickDown })
         onClickDown={() => onClickDown(post.id)}
         onClickDetail={() => onClickDetail(post.id)}
         onClickDelete={() =>onClickDelete(post.id)}
+        linkAddress={post.category+"/"+post.id}
+        numberOfComments={numberOfComments}
       ></Post>
     )}
   </ul>
@@ -28,6 +30,7 @@ PostsList.propTypes = {
     category:PropTypes.string.isRequired,
     voteScore:PropTypes.number.isRequired
   }).isRequired).isRequired,
+  numberOfComments: PropTypes.number.isRequired,
   onClickDown: PropTypes.func.isRequired,
   onClickUp: PropTypes.func.isRequired,
   onClickDetail:PropTypes.func.isRequired

@@ -8,7 +8,7 @@ const initialState = {
   visibilityFilter:'ALL',
   posts:[{
     id:100000000000000,
-    timestamp:"12341234fgg",
+    timestamp:"27/3/2018 @ 0:0:40",
     title:"nihao",
     body:"xxixixixi",
     author:"wemngxuyabng",
@@ -18,7 +18,7 @@ const initialState = {
    }],
    showPost:[{
     id:100000000000000,
-    timestamp:"12341234fgg",
+    timestamp:"27/3/2018 @ 0:0:40",
     title:"nihao",
     body:"xxixixixi",
     author:"wemngxuyabng",
@@ -28,9 +28,9 @@ const initialState = {
    }],
    comments:[
        {
-        id: '894tuq4ut84ut8v4t8wun89g',
+        id: 12345123512351235,
         parentId: 100000000000000,
-        timestamp: 1468166872634,
+        timestamp: "27/3/2018 @ 0:0:40",
         body: 'Hi there! I am a COMMENT.',
         author: 'thingtwo',
         voteScore: 6,
@@ -38,9 +38,9 @@ const initialState = {
         parentDeleted: false
       },
       {
-        id: '8tu4bsun805n8un48ve89',
+        id: 1234616123462345634,
         parentId: 100000000000000,
-        timestamp: 1469479767190,
+        timestamp: "27/3/2018 @ 0:0:41",
         body: 'Comments. Are. Cool.',
         author: 'thingone',
         voteScore: -5,

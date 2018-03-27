@@ -8,7 +8,7 @@ function showAll (comment){
   return false
 
 }
-const CommentsList = ({ comments, onClickDetail,onClickUpComment,onDeleteComment,onClickDownComment }) => (
+const CommentsList = ({ comments,onClickUpComment,onDeleteComment,onClickDownComment }) => (
   <ul>
     {comments.filter(c=>showAll(c)).map(comment =>
       <Comment
@@ -16,7 +16,6 @@ const CommentsList = ({ comments, onClickDetail,onClickUpComment,onDeleteComment
         {...comment}
         onClickUp={() => onClickUpComment(comment.id)}
         onClickDown={() => onClickDownComment(comment.id)}
-        onClickDetail={() => onClickDetail(comment.id)}
         onClickDeleteComment={()=>onDeleteComment(comment.id)}
       ></Comment>
     )}
@@ -34,9 +33,8 @@ CommentsList.propTypes = {
     voteScore:PropTypes.number.isRequired,
     parentDeleted:PropTypes.bool.isRequired
   }).isRequired).isRequired,
-  onClickDown: PropTypes.func.isRequired,
-  onClickUp: PropTypes.func.isRequired,
-  onClickDetail:PropTypes.func.isRequired
+  onClickDownComment: PropTypes.func.isRequired,
+  onClickUpComment: PropTypes.func.isRequired,
 
 }
 
