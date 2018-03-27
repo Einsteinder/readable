@@ -12,6 +12,16 @@ export const addPost = (category,title,author,body) => ({
   body,
 
 })
+export const updatePost = (id,category,title,author,body) => ({
+  type:'UPDATE_POST',
+  id,
+  category,
+  title,
+  author,
+  body,
+  voteScore:0,
+
+})
 
 export const setVisibilityFilter = filter => ({
   type: 'SET_VISIBILITY_FILTER',

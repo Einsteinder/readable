@@ -11,6 +11,8 @@ class AddPost extends React.Component {
       selectedOption: changeEvent.target.value
     });
   }
+
+
   dispatch = this.props.dispatch
   render(){
   let inputTitle

@@ -24,6 +24,24 @@ const posts = (state = [], action) => {
         }
       ]
 
+    case 'UPDATE_POST':
+      var currentdate = new Date(); 
+      var datetime = currentdate.getDate() + "/"
+                  + (currentdate.getMonth()+1)  + "/" 
+                  + currentdate.getFullYear() + " @ "  
+                  + currentdate.getHours() + ":"  
+                  + currentdate.getMinutes() + ":" 
+                  + currentdate.getSeconds();
+      return state.map(post=>
+        (post.id===action.id)?{...post,          
+          category:action.category,
+          body: action.body,
+          title:action.title,
+          author:action.author,
+          timestamp:datetime,
+          voteScore:action.voteScore,
+          deleted: false}:post)
+
     case 'DELETE_POST':
       return state.map(post=>
         (post.id===action.id)?{...post,deleted:true}:post)
