@@ -1,26 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Comment from './Comment'
-function showAll (comment){
-  if(!comment.deleted){
-    return true
-  }
-  return false
 
-}
-const CommentsList = ({ comments,onClickUpComment,onDeleteComment,onClickDownComment }) => (
-  <ul>
-    {comments.filter(c=>showAll(c)).map(comment =>
+
+class CommentsList extends React.Component {
+
+render(){
+  function showAll (comment){
+    if(!comment.deleted){
+      return true
+    }
+    return false
+  
+  }
+  return <ul>
+    {this.props.comments.filter(c=>showAll(c)).map(comment =>
       <Comment
         key={comment.id}
         {...comment}
-        onClickUp={() => onClickUpComment(comment.id)}
-        onClickDown={() => onClickDownComment(comment.id)}
-        onClickDeleteComment={()=>onDeleteComment(comment.id)}
+        onClickUp={() => this.props.onClickUpComment(comment.id)}
+        onClickDown={() => this.props.onClickDownComment(comment.id)}
+        onClickDeleteComment={()=>this.props.onDeleteComment(comment.id)}
+        updateComment={this.props.updateC}
+  
       ></Comment>
     )}
-  </ul>
-)
+  </ul>}
+}
 
 CommentsList.propTypes = {
   comments: PropTypes.arrayOf(PropTypes.shape({

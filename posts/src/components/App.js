@@ -3,7 +3,7 @@ import AddPost from '../containers/AddPost'
 import VisiblePostsList from '../containers/VisiblePostsList'
 import Category from './Category';
 import PostDetailContainer from '../containers/PostDetailContainer'
-import {Route, Link } from "react-router-dom";
+import {Route} from "react-router-dom";
 const App = () => (
   <div>
     <AddPost />

@@ -2,13 +2,7 @@
 const comments = (state = [], action) => {
     switch (action.type) {
       case 'ADD_COMMENT':
-      var currentdate = new Date(); 
-      var datetime = currentdate.getDate() + "/"
-                  + (currentdate.getMonth()+1)  + "/" 
-                  + currentdate.getFullYear() + " @ "  
-                  + currentdate.getHours() + ":"  
-                  + currentdate.getMinutes() + ":" 
-                  + currentdate.getSeconds();
+
   
         return [
           ...state,
@@ -17,12 +11,25 @@ const comments = (state = [], action) => {
             parentId:action.parentId,
             body: action.body,
             author:action.author,
-            timestamp:datetime,
+            timestamp:action.timestamp,
             voteScore:0,
             deleted: false,
             parentDeleted:false
           }
         ]
+
+      case 'UPDATE_COMMENT':
+
+        return state.map(comment=>
+          (comment.id===action.id)?{...comment,
+            parentId:action.parentId,          
+            body: action.body,
+            author:action.author,
+            timestamp:action.timestamp,
+            voteScore:action.voteScore,
+            deleted: false,
+            parentDeleted:false
+          }:comment)
   
       case 'DELETE_COMMENT':
         return state.map(comment=>

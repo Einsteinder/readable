@@ -18,7 +18,13 @@ class AddPost extends React.Component {
   let inputTitle
   let inputAuthor
   let inputBody
-
+  var currentdate = new Date(); 
+  var datetime = currentdate.getDate() + "/"
+              + (currentdate.getMonth()+1)  + "/" 
+              + currentdate.getFullYear() + " @ "  
+              + currentdate.getHours() + ":"  
+              + currentdate.getMinutes() + ":" 
+              + currentdate.getSeconds();
   return (
     <div>
       <form onSubmit={e => {
@@ -32,7 +38,7 @@ class AddPost extends React.Component {
         if (!inputBody.value.trim()) {
           return
         }
-        this.dispatch(addPost(this.state.selectedOption,inputTitle.value,inputAuthor.value,inputBody.value))
+        this.dispatch(addPost(this.state.selectedOption,inputTitle.value,inputAuthor.value,inputBody.value,datetime))
         inputTitle.value = ''
         inputAuthor.value =''
         inputBody.value =''

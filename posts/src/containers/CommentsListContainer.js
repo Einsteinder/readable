@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import {onClickDown,deleteComment, onClickUp,onClickUpComment,updateComment,onClickDownComment, addComment} from '../actions'
-import PostDetail from '../components/PostDetail';
+import {deleteComment,onClickUpComment,updateComment,onClickDownComment} from '../actions'
+import CommentsList from '../components/CommentsList';
 
 
 const getCommentsForPost = (comments,parentId) => {
@@ -18,21 +18,19 @@ const mapStateToProps = state => (
 
 )
 
+
 const mapDispatchToProps = dispatch => ({
-  onClickUp: score =>dispatch(onClickUp(score)),
-  onClickDown: score =>dispatch(onClickDown(score)),
   onClickUpComment: score =>dispatch(onClickUpComment(score)),
   onClickDownComment: score =>dispatch(onClickDownComment(score)),
-  addComment:(parentId,author,body,timestamp) => dispatch(addComment(parentId,author,body,timestamp)),
   onDeleteComment:(id)=>dispatch(deleteComment(id)),
-  updateC:(id,parentId,author,body,timestamp)=>(updateComment(id,parentId,author,body,timestamp))
+  updateC:(id,parentId,author,body,updateDatetime)=>(updateComment(id,parentId,author,body,updateDatetime))
 
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PostDetail)
+)(CommentsList)
 
 
 

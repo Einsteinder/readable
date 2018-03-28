@@ -1,24 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Post from './Post'
+class PostsList extends React.Component {
 
-const PostsList = ({ posts, numberOfComments,onClickDetail,onClickDelete,onClickUp,onClickDown,updatePost }) => (
+render(){
+  return(
+
   <ul>
-    {posts.map(post =>
+    {this.props.posts.map(post =>
       <Post
         key={post.id}
         {...post}
-        onClickUp={() => onClickUp(post.id)}
-        onClickDown={() => onClickDown(post.id)}
-        onClickDetail={() => onClickDetail(post.id)}
-        onClickDelete={() =>onClickDelete(post.id)}
+        onClickUp={() => this.props.onClickUp(post.id)}
+        onClickDown={() => this.props.onClickDown(post.id)}
+        onClickDetail={() => this.props.onClickDetail(post.id)}
+        onClickDelete={() =>this.props.onClickDelete(post.id)}
         linkAddress={post.category+"/"+post.id}
-        numberOfComments={numberOfComments}
-        updatePost={updatePost}
+        numberOfComments={this.props.numberOfComments}
+        updatePost={this.props.updatePost}
       ></Post>
     )}
   </ul>
-)
+)}}
 
 PostsList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({

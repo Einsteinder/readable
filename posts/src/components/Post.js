@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { updatePost } from '../actions';
+import {  Link } from "react-router-dom";
 
 
 
@@ -23,6 +22,13 @@ class Post extends React.Component {
     let inputTitle
     let inputAuthor
     let inputBody
+    var updateCurrentdate = new Date(); 
+    var updateCurrentdatetime = updateCurrentdate.getDate() + "/"
+                + (updateCurrentdate.getMonth()+1)  + "/" 
+                + updateCurrentdate.getFullYear() + " @ "  
+                + updateCurrentdate.getHours() + ":"  
+                + updateCurrentdate.getMinutes() + ":" 
+                + updateCurrentdate.getSeconds();
     return (
       <li>
         {this.state.edit ? (
@@ -39,7 +45,7 @@ class Post extends React.Component {
           return
         }
         this.setState({ edit: false })
-        this.props.updatePost(this.props.id,this.state.selectedOption,inputTitle.value,inputAuthor.value,inputBody.value)
+        this.props.updatePost(this.props.id,this.state.selectedOption,inputTitle.value,inputAuthor.value,inputBody.value,updateCurrentdatetime)
         inputTitle.value = ''
         inputAuthor.value =''
         inputBody.value =''

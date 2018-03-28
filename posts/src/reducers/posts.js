@@ -2,13 +2,7 @@
 const posts = (state = [], action) => {
   switch (action.type) {
     case 'ADD_POST':
-    var currentdate = new Date(); 
-    var datetime = currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
+
 
       return [
         ...state,
@@ -18,27 +12,21 @@ const posts = (state = [], action) => {
           body: action.body,
           title:action.title,
           author:action.author,
-          timestamp:datetime,
+          timestamp:action.timestamp,
           voteScore:action.voteScore,
           deleted: false
         }
       ]
 
     case 'UPDATE_POST':
-      var currentdate = new Date(); 
-      var datetime = currentdate.getDate() + "/"
-                  + (currentdate.getMonth()+1)  + "/" 
-                  + currentdate.getFullYear() + " @ "  
-                  + currentdate.getHours() + ":"  
-                  + currentdate.getMinutes() + ":" 
-                  + currentdate.getSeconds();
+
       return state.map(post=>
         (post.id===action.id)?{...post,          
           category:action.category,
           body: action.body,
           title:action.title,
           author:action.author,
-          timestamp:datetime,
+          timestamp:action.timestamp,
           voteScore:action.voteScore,
           deleted: false}:post)
 

@@ -2,7 +2,7 @@ let nextPostId = 0
 let nextCommentId = 0
 
 
-export const addPost = (category,title,author,body) => ({
+export const addPost = (category,title,author,body,timestamp) => ({
   type: 'ADD_POST',
   id: nextPostId++,
   voteScore:0,
@@ -10,9 +10,10 @@ export const addPost = (category,title,author,body) => ({
   title,
   author,
   body,
+  timestamp
 
 })
-export const updatePost = (id,category,title,author,body) => ({
+export const updatePost = (id,category,title,author,body,timestamp) => ({
   type:'UPDATE_POST',
   id,
   category,
@@ -20,20 +21,36 @@ export const updatePost = (id,category,title,author,body) => ({
   author,
   body,
   voteScore:0,
+  timestamp
 
 })
+
+export const updateComment = (id,parentId,author,body,timestamp) => ({
+  type:'UPDATE_COMMENT',
+  id,
+  parentId,
+  author,
+  body,
+  voteScore:0,
+  timestamp
+})
+
 
 export const setVisibilityFilter = filter => ({
   type: 'SET_VISIBILITY_FILTER',
   filter
 })
-
-export const addComment = (parentId,author,body) => ({
+export const sortBy = filter => ({
+  type: 'SORT_BY',
+  filter
+})
+export const addComment = (parentId,author,body,timestamp) => ({
   type: 'ADD_COMMENT',
   id:nextCommentId++,
   parentId,
   author,
-  body
+  body,
+  timestamp
 })
 
 

@@ -15,24 +15,47 @@ function showAll (post){
   return false
 
 }
-
+function comparePostByRate(a,b){
+  return a.voteScore - b.voteScore
+}
+function comparePostByTime(a,b){
+  return a.timestamp - b.timestamp
+}
 const getVisiblePosts = (posts, filter) => {
   switch (filter) {
     case 'REACT':
-      return posts.filter(p => showFilter(p,'react'))
+      return posts.filter(p => showFilter(p,'react')).sort(comparePostByRate)
     case 'REDUX':
-      return posts.filter(p => showFilter(p,'redux'))
+      return posts.filter(p => showFilter(p,'redux')).sort(comparePostByRate)
     case 'UDACITY':
-      return posts.filter(p => showFilter(p,'udacity'))
+      return posts.filter(p => showFilter(p,'udacity')).sort(comparePostByRate)
     case 'ALL':
-      return posts.filter(p => showAll(p))
+      return posts.filter(p => showAll(p)).sort(comparePostByRate)
     default:
       throw new Error('Unknown filter: ' + filter)
   }
 }
 
-const mapStateToProps = state => ({
-  posts: getVisiblePosts(state.posts, state.visibilityFilter),
+
+const getVisiblePostsByTime = (posts, filter) => {
+  switch (filter) {
+    case 'REACT':
+      return posts.filter(p => showFilter(p,'react')).sort(comparePostByTime)
+    case 'REDUX':
+      return posts.filter(p => showFilter(p,'redux')).sort(comparePostByTime)
+    case 'UDACITY':
+      return posts.filter(p => showFilter(p,'udacity')).sort(comparePostByTime)
+    case 'ALL':
+      return posts.filter(p => showAll(p)).sort(comparePostByTime)
+    default:
+      throw new Error('Unknown filter: ' + filter)
+  }
+}
+
+
+const mapStateToProps = state => (
+  {
+  posts: state.sortBy==="RATE" ? getVisiblePosts(state.posts, state.visibilityFilter):getVisiblePostsByTime(state.posts, state.visibilityFilter) ,
   numberOfComments: state.comments.length
 })
 
@@ -41,7 +64,7 @@ const mapDispatchToProps = dispatch => ({
   onClickDown: score =>dispatch(onClickDown(score)),
   onClickDetail: id =>dispatch(setPostVisible(id)),
   onClickDelete: id =>dispatch(deletePost(id)),
-  updatePost: (id,category,title,author,body)=>dispatch(updatePost(id,category,title,author,body))
+  updatePost: (id,category,title,author,body,timestamp)=>dispatch(updatePost(id,category,title,author,body,timestamp))
   
 
 })
