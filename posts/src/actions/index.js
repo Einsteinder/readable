@@ -1,5 +1,25 @@
+import fetchPostsApi from '../utils/api'
+
+
+
 let nextPostId = 0
 let nextCommentId = 0
+
+
+export const receivePosts = posts=>({
+  type:'RECEIVE_POSTS',
+  posts
+})
+
+const fetchPosts =() => dispatch =>{
+  return fetchPostsApi().then(posts => dispatch(receivePosts(posts)))
+}
+
+export const fetchPostsIfNeeded = ()=> (dispatch) => {
+
+    return dispatch(fetchPosts())
+
+}
 
 
 export const addPost = (category,title,author,body,timestamp) => ({

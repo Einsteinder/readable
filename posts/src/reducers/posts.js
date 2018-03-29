@@ -17,6 +17,25 @@ const posts = (state = [], action) => {
           deleted: false
         }
       ]
+    case 'RECEIVE_POSTS':
+      const arr = []
+      action.posts.map(post=>arr.push({
+        id: post.id,
+        category:post.category,
+        body: post.body,
+        title:post.title,
+        author:post.author,
+        timestamp:post.timestamp,
+        voteScore:post.voteScore,
+        deleted: post.deleted
+      }))
+      for(let i = 0;i<state.length;i++){
+        arr.push(state[i])
+
+      }
+      return arr
+      
+      
 
     case 'UPDATE_POST':
 
