@@ -3,7 +3,7 @@ import AddPost from '../containers/AddPost'
 import VisiblePostsList from '../containers/VisiblePostsList'
 import Category from './Category';
 import PostDetailContainer from '../containers/PostDetailContainer'
-import {Route} from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 const App = () => (
   <div>
     <AddPost />
@@ -13,6 +13,11 @@ const App = () => (
     <Route path="/:category/:id" component={PostDetailContainer} />
 
 
+    <Route exact path="/" render={() => (
+
+      <Redirect to="/ALL" />
+
+    )} />
   </div>
 )
 

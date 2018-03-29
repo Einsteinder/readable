@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import {onClickDown,onClickUp,setPostVisible,deletePost,updatePost } from '../actions'
+import {onClickDown,onClickUp,setPostVisible,deletePost,updatePost,setVisibilityFilter } from '../actions'
 import PostsList from '../components/PostsList';
 function showFilter (post,category){
   if(post.category===category && !post.deleted){
@@ -51,22 +51,23 @@ const getVisiblePostsByTime = (posts, filter) => {
       throw new Error('Unknown filter: ' + filter)
   }
 }
-
-
+const toUpperCase =(x)=>{
+    return x.toUpperCase()
+  
+}
 const mapStateToProps = state => (
   {
   posts: state.sortBy==="RATE" ? getVisiblePosts(state.posts, state.visibilityFilter):getVisiblePostsByTime(state.posts, state.visibilityFilter) ,
   numberOfComments: state.comments.length
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch,ownProp) => ({
   onClickUp: score =>dispatch(onClickUp(score)),
   onClickDown: score =>dispatch(onClickDown(score)),
   onClickDetail: id =>dispatch(setPostVisible(id)),
   onClickDelete: id =>dispatch(deletePost(id)),
-  updatePost: (id,category,title,author,body,timestamp)=>dispatch(updatePost(id,category,title,author,body,timestamp))
-  
-
+  updatePost: (id,category,title,author,body,timestamp)=>dispatch(updatePost(id,category,title,author,body,timestamp)),
+  checkLink: () =>dispatch(setVisibilityFilter(toUpperCase(ownProp.match.params.category)))
 })
 
 export default connect(

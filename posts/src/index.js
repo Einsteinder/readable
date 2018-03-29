@@ -15,9 +15,10 @@ const store = createStore(
     applyMiddleware(thunk)
   )
 )
-console.log(store.getState())
+
+
+
 store.dispatch(fetchPostsIfNeeded())
-console.log(store.getState())
 
 render(
 <Provider store={store}> 

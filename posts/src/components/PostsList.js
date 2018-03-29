@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Post from './Post'
 class PostsList extends React.Component {
+  componentDidMount(){
+    this.props.checkLink()
+  }
 
 render(){
   return(

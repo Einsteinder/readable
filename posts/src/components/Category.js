@@ -19,7 +19,7 @@ const Category = () => (
       <Link to="/udacity">UDACITY</Link>
     </FilterLink>
     <FilterLink filter={VisibilityFilters.ALL}>
-      ALL
+      <Link to ="/all">ALL</Link>
     </FilterLink>
   </div>
 )
