@@ -18,7 +18,7 @@ render(){
         onClickDown={() => this.props.onClickDown(post.id)}
         onClickDetail={() => this.props.onClickDetail(post.id)}
         onClickDelete={() =>this.props.onClickDelete(post.id)}
-        linkAddress={post.category+"/"+post.id}
+        linkAddress={"/"+post.category+"/"+post.id}
         numberOfComments={this.props.numberOfComments}
         updatePost={this.props.updatePost}
       ></Post>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import {onClickDown,onClickUp,setPostVisible,deletePost,updatePost,setVisibilityFilter } from '../actions'
+import {downVotePost,upVotePost,setPostVisible,deletePost,updatePost,setVisibilityFilter } from '../actions'
 import PostsList from '../components/PostsList';
 function showFilter (post,category){
   if(post.category===category && !post.deleted){
@@ -62,8 +62,8 @@ const mapStateToProps = state => (
 })
 
 const mapDispatchToProps = (dispatch,ownProp) => ({
-  onClickUp: score =>dispatch(onClickUp(score)),
-  onClickDown: score =>dispatch(onClickDown(score)),
+  onClickUp: score =>dispatch(upVotePost(score)),
+  onClickDown: score =>dispatch(downVotePost(score)),
   onClickDetail: id =>dispatch(setPostVisible(id)),
   onClickDelete: id =>dispatch(deletePost(id)),
   updatePost: (id,category,title,author,body,timestamp)=>dispatch(updatePost(id,category,title,author,body,timestamp)),

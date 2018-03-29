@@ -1,9 +1,11 @@
-import fetchPostsApi from '../utils/api'
+import * as api from '../utils/api'
 
 
 
 let nextPostId = 0
 let nextCommentId = 0
+const UP = 'UP'
+const DOWN = 'DOWN'
 
 
 export const receivePosts = posts=>({
@@ -11,14 +13,9 @@ export const receivePosts = posts=>({
   posts
 })
 
-const fetchPosts =() => dispatch =>{
-  return fetchPostsApi().then(posts => dispatch(receivePosts(posts)))
-}
 
-export const fetchPostsIfNeeded = ()=> (dispatch) => {
-
-    return dispatch(fetchPosts())
-
+export const fetchPosts =() => dispatch =>{
+  return api.fetchPosts().then(posts => dispatch(receivePosts(posts)))
 }
 
 
@@ -84,6 +81,11 @@ export const onClickUp = id => ({
   id
 })
 
+export const upVotePost =(id) => dispatch =>{
+  return api.changeScore(id,UP).then(post => dispatch(onClickUp(post.id)))
+}
+
+
 export const deletePost = id => ({
   type: 'DELETE_POST',
   id
@@ -97,6 +99,9 @@ export const onClickDown = id => ({
   type: 'ON_CLICK_DOWN',
   id
 })
+export const downVotePost =(id) => dispatch =>{
+  return api.changeScore(id,DOWN).then(post => dispatch(onClickDown(post.id)))
+}
 
 export const onClickUpComment = id => ({
   type: 'ON_CLICK_UP_C',

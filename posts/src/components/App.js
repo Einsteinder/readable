@@ -10,7 +10,7 @@ const App = () => (
     <Category />
     <Route path="/:category" component={VisiblePostsList} />
 
-    <Route path="/:category/:id" component={PostDetailContainer} />
+    <Route exact path="/:category/:id" component={PostDetailContainer} />
 
 
     <Route exact path="/" render={() => (
