@@ -70,13 +70,13 @@ class Post extends React.Component {
           </label>
         </div>
         <span>Title: </span>
-        <input ref={node => inputTitle = node} />
+        <input ref={node => inputTitle = node} value={this.props.title}/>
         <span>Author: </span>
-        <input ref={node => inputAuthor = node} />
+        <input ref={node => inputAuthor = node} value={this.props.author}/>
         <br/>
         <span>Content: </span>
         <br/>
-        <textarea ref={node => inputBody = node} rows="8" cols="55"/>
+        <textarea ref={node => inputBody = node} value = {this.props.body} rows="8" cols="55"/>
         <button type="submit">
           Update Post
         </button>
